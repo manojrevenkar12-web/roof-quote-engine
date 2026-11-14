@@ -9,7 +9,7 @@
     "guttersWhenOld": true,
     "downpipesPerSide": 1
   },
-  "measurement": { "preferPlan": true, "satelliteWithin": 0.05, "askWhenOnlyVoice": true },
+  "measurement": { "preferPlan": true, "satelliteWithin": 0.05, "askWhenOnlyVoice": true, "tapeBeforeSatellite": true },
   "learning": { "minSupport": 3, "minNetFixed": 2, "maxP": 0.1, "replayLast": 30 },
   "acceptance": { "sendableWithin": 0.03 },
   "prices": { "inPerMtokEur": 2.8, "outPerMtokEur": 14.0, "officeEurPerHour": 45.0, "minutesPerEdit": 3.0, "minutesManualQuote": 75.0 }

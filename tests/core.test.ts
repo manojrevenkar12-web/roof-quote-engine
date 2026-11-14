@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { glossaryEvidence, glossaryFrom } from "../src/core/learn.js";
-import { materialPhrase, parsePlan, settle } from "../src/core/measure.js";
+import { materialPhrase, parsePlan, tapeFromVoice, settle } from "../src/core/measure.js";
 import { buildQuote, includes, total } from "../src/core/quote.js";
 import { diff, edits, sendable } from "../src/core/score.js";
 import { takeoff } from "../src/core/takeoff.js";
@@ -40,6 +40,20 @@ describe("measuring and pricing", () => {
     expect(m.questions).toHaveLength(1);
     const withPlan = settle("J", { ...inputs, plan: "Grundriss 12,00 m x 9,00 m, Dachneigung 30°" }, spec, { satellite: () => ({ length: 1, width: 1 }), ask: () => null }, { askWhenOnlyVoice: true });
     expect([withPlan.source, withPlan.spec.length, withPlan.spec.pitch]).toEqual(["plan", 12, 30]);
+  });
+
+  it("takes a tape measurement from the voice note before the satellite, never a rough one", () => {
+    expect(tapeFromVoice("Also, Satteldach, 14,09 mal 9,22 Meter.")).toEqual({ length: 14.09, width: 9.22 });
+    expect(tapeFromVoice("Also, Walmdach, 9,2 mal 14 Meter.")).toEqual({ length: 14, width: 9.2 });
+    expect(tapeFromVoice("Also, Satteldach, so ungefähr vierzehn mal so ungefähr neun Meter.")).toBeNull();
+    const look = { satellite: () => ({ length: 14.3, width: 9.1 }), ask: () => null };
+    const voice = "Also, Satteldach, 14,09 mal 9,22 Meter. Neu mit Biber.";
+    const inputs = { voice, photos: [], plan: null, address: "x" };
+    const tape = settle("J", inputs, spec, look, { askWhenOnlyVoice: true, tapeBeforeSatellite: true });
+    expect([tape.source, tape.spec.length, tape.spec.width]).toEqual(["tape", 14.09, 9.22]);
+    expect(settle("J", inputs, spec, look, { askWhenOnlyVoice: true }).source).toBe("satellite");
+    const plan = settle("J", { ...inputs, plan: "Grundriss 14,10 m x 9,20 m, Dachneigung 30°" }, spec, look, { askWhenOnlyVoice: true, tapeBeforeSatellite: true });
+    expect(plan.source).toBe("plan");
   });
 
   it("applies the most specific learned rule, then the default", () => {

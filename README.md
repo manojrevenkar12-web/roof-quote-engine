@@ -6,8 +6,8 @@ into a quote **priced from the roofer's own catalog**, the way **that roofer** w
 habits from the edits they make before sending, without learning the wrong ones.
 
 - **The model reads, code measures and prices.** An LLM turns the voice note and photo notes into a structured roof
-  spec (Vercel AI SDK, zod schema). Dimensions come from the architect's plan (parsed by code) or a satellite
-  footprint; a rough "so ungefähr zehn mal acht" is never priced, it becomes a question to the customer. Quantities are
+  spec (Vercel AI SDK, zod schema). Dimensions come from the architect's plan (parsed by code), the roofer's own
+  tape measurement in the voice note, or a satellite footprint; a rough "so ungefähr zehn mal acht" is never priced, it becomes a question to the customer. Quantities are
   geometry; prices come from the catalog.
 - **Each roofer's habits are learned from their edits**: scaffolding from two storeys or always, new underlay on a
   renovation or not, gutters offered when the old ones are rusted, their waste factor. A rule is kept only when
@@ -18,10 +18,10 @@ habits from the edits they make before sending, without learning the wrong ones.
 
 On 8 simulated roofers and 400 jobs:
 
-- **81.3% of quotes sent without a single edit** over each roofer's last 20 jobs, against 3.1% when the
-  LLM writes the whole quote and 40.6% when every edit becomes a rule.
-- **0.55 edits per quote** against 4.58; median total off by 1.0% against 9.1%.
-- **6.7 office minutes per quote** against 75 by hand, at €0.011 of model cost.
+- **86.9% of quotes sent without a single edit** over each roofer's last 20 jobs, against 3.1% when the
+  LLM writes the whole quote and 43.8% when every edit becomes a rule.
+- **0.48 edits per quote** against 4.58; median total off by 1.0% against 9.1%.
+- **6.4 office minutes per quote** against 75 by hand, at €0.011 of model cost.
 - **Dimensions right in 100.0% of jobs** once code settles them, against 77.0% as the model reads them; the covering
   right in 96.8% with the learned glossary against 83.5% without.
 
@@ -32,9 +32,9 @@ On 8 simulated roofers and 400 jobs:
 | Design | Sent without edits | Last 20 jobs per roofer | Edits per quote | Median total error | Office minutes per quote | LLM cost per quote |
 |---|--:|--:|--:|--:|--:|--:|
 | LLM writes the whole quote | 5.0% | 3.1% | 4.58 | 9.1% | 18.7 | €0.039 |
-| LLM reads, code measures and prices | 33.5% | 35.0% | 1.64 | 3.2% | 9.9 | €0.011 |
-| + learns every edit at once | 43.8% | 40.6% | 1.22 | 2.1% | 8.7 | €0.011 |
-| **+ learns habits through a replay gate** | 72.8% | 81.3% | 0.55 | 1.0% | 6.7 | €0.011 |
+| LLM reads, code measures and prices | 35.3% | 37.5% | 1.57 | 3.2% | 9.7 | €0.011 |
+| + learns every edit at once | 46.8% | 43.8% | 1.15 | 1.8% | 8.4 | €0.011 |
+| **+ learns habits through a replay gate** | 76.3% | 86.9% | 0.48 | 1.0% | 6.4 | €0.011 |
 
 A quote counts as sent without edits when the roofer changed no line (quantity within 3%, same items, same prices)
 and the total is within 3%.
@@ -52,14 +52,15 @@ and the total is within 3%.
 | chimneys | 99.5% | 99.5% |
 | renovation | 100.0% | 100.0% |
 
-Plans were parsed for 200 jobs, satellite footprints used for 165, and 20 questions sent to customers
+Plans were parsed for 200 jobs, the roofer's own tape measurement from the voice note used for 75,
+satellite footprints for 105, and 20 questions sent to customers
 (18 answered) when only a rough voice size was left.
 
 ### Habits learned per roofer (gated)
 
 | Roofer | True habits (simulation) | Rules learned |
 |---|---|---|
-| P1 Dachdeckerei Krüger | waste 8%, scaffold storeys2, new underlay, offers gutters | waste on covering 8% |
+| P1 Dachdeckerei Krüger | waste 8%, scaffold storeys2, new underlay, offers gutters | defaults fit |
 | P2 Dachdeckerei Schulze | waste 12%, scaffold never, new underlay, skips gutters | leave out scaffold; leave out gutter when renovation |
 | P3 Dachdeckerei Neumann | waste 8%, scaffold never, keeps underlay, skips gutters | leave out underlay when renovation; leave out scaffold; leave out gutter when renovation |
 | P4 Dachdeckerei Hartmann | waste 12%, scaffold storeys2, new underlay, skips gutters | leave out gutter when renovation |
@@ -72,14 +73,23 @@ Glossary learned across roofers: "biberschwanzziegel" = biberschwanz, "biberschw
 
 ## Held-out world (run once)
 
-Not run yet. `npx tsx scripts/evaluate.ts --heldout` runs it once and writes `config/heldout.lock`.
+Other roofers and other ways of speaking, run once with the code and settings the dev world ended on (`config/heldout.lock`).
+
+| Design | Sent without edits | Last 20 jobs per roofer | Edits per quote | Median total error | Office minutes per quote | LLM cost per quote |
+|---|--:|--:|--:|--:|--:|--:|
+| LLM writes the whole quote | 5.0% | 6.0% | 4.72 | 11.8% | 19.2 | €0.039 |
+| LLM reads, code measures and prices | 35.4% | 33.5% | 1.68 | 4.8% | 10.1 | €0.011 |
+| + learns every edit at once | 54.0% | 54.5% | 1.23 | 1.4% | 8.7 | €0.011 |
+| **+ learns habits through a replay gate** | 66.8% | 74.5% | 0.73 | 1.0% | 7.2 | €0.011 |
+
+What went wrong and what changed afterwards: [docs/heldout.md](docs/heldout.md).
 
 ## How it is built
 
 | Part | Files | What it does |
 |---|---|---|
 | Read | `src/llm/reader.ts`, `prompts/extract.md` | `generateObject` with the `JobSpec` zod schema (Vercel AI SDK, Anthropic). |
-| Settle | `src/core/measure.ts` | Plan parsed by code, satellite footprint, customer question; storeys and skylights from photo notes; glossary. |
+| Settle | `src/core/measure.ts` | Plan parsed by code, then the roofer's tape measurement, then the satellite footprint, then a customer question; storeys and skylights from photo notes; glossary. |
 | Take off and price | `src/core/takeoff.ts`, `src/core/quote.ts` | Roof area, ridge, hips, gutters, downpipes, scaffold; lines from the roofer's catalog with their rules. |
 | Learn | `src/core/learn.ts` | Evidence from each sent quote; naive or replay-gated rules; glossary. |
 | Store and serve | `src/db/schema.ts`, `src/service.ts`, `src/api/app.ts` | Drizzle on Postgres (PGlite in tests); Express: `POST /jobs`, `POST /quotes/:id/sent`, `GET /partners/:id/rules`. |

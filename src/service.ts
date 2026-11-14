@@ -12,7 +12,7 @@ import type { Reader } from "./llm/reader.js";
 
 export type EngineConfig = {
   defaults: Defaults;
-  measurement: { askWhenOnlyVoice: boolean };
+  measurement: { askWhenOnlyVoice: boolean; tapeBeforeSatellite?: boolean };
   learning: { minSupport: number; minNetFixed: number; maxP: number; replayLast: number };
 };
 export type Satellite = (address: string) => Promise<{ length: number; width: number } | null>;

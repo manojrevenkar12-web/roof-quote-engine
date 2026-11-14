@@ -1,6 +1,7 @@
 /**
- * Dimensions are not the model's job. An architect's plan is parsed by code; without one, a satellite footprint is
- * used; a voice note that says "so ungefähr" is never priced from, it becomes a question to the customer.
+ * Dimensions are not the model's job. An architect's plan is parsed by code; without one, a roofer's tape measurement
+ * read from the voice note (to the centimetre, no "so ungefähr"); then a satellite footprint; a voice note that only
+ * says "so ungefähr" is never priced from, it becomes a question to the customer.
  */
 import type { Inputs, JobSpec } from "./types.js";
 
@@ -46,7 +47,16 @@ export function materialPhrase(voice: string): string | null {
   return m ? m[1].trim().toLowerCase() : null;
 }
 
-export type Measured = { spec: JobSpec; source: "plan" | "satellite" | "voice" | "customer"; questions: string[] };
+/** "14,09 mal 9,22 Meter" said on site is a tape measurement; "so ungefähr vierzehn mal neun" is not. */
+export function tapeFromVoice(voice: string): { length: number; width: number } | null {
+  if (/so ungefähr/i.test(voice)) return null;
+  const m = /\b(\d+(?:,\d{1,2})?)\s+mal\s+(\d+(?:,\d{1,2})?)\s+Meter/.exec(voice);
+  if (!m) return null;
+  const [a, b] = [num(m[1]), num(m[2])];
+  return { length: Math.max(a, b), width: Math.min(a, b) };
+}
+
+export type Measured = { spec: JobSpec; source: "plan" | "tape" | "satellite" | "voice" | "customer"; questions: string[] };
 
 export type Lookups = {
   satellite: (jobId: string) => { length: number; width: number } | null;
@@ -59,7 +69,7 @@ export function settle(
   inputs: Inputs,
   read: JobSpec,
   look: Lookups,
-  cfg: { askWhenOnlyVoice: boolean },
+  cfg: { askWhenOnlyVoice: boolean; tapeBeforeSatellite?: boolean },
   glossary: Record<string, JobSpec["family"]> = {},
 ): Measured {
   const spec = { ...read };
@@ -74,8 +84,13 @@ export function settle(
     Object.assign(spec, plan);
     source = "plan";
   } else {
-    const sat = look.satellite(jobId);
-    if (sat) {
+    const tape = cfg.tapeBeforeSatellite ? tapeFromVoice(inputs.voice) : null;
+    const sat = tape ? null : look.satellite(jobId);
+    if (tape) {
+      spec.length = tape.length;
+      spec.width = tape.width;
+      source = "tape";
+    } else if (sat) {
       spec.length = Math.max(sat.length, sat.width);
       spec.width = Math.min(sat.length, sat.width);
       source = "satellite";

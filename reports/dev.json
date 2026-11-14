@@ -23,42 +23,42 @@
   },
   "spec_code": {
    "jobs": 400,
-   "sendable": 134,
-   "sendableShare": 0.335,
-   "sendableLast20": 0.35,
-   "editsPerQuote": 1.64,
-   "medianTotalError": 0.0319,
+   "sendable": 141,
+   "sendableShare": 0.3525,
+   "sendableLast20": 0.375,
+   "editsPerQuote": 1.57,
+   "medianTotalError": 0.0322,
    "p90TotalError": 0.2793,
    "questionsAsked": 20,
-   "officeMinutesPerQuote": 9.9,
+   "officeMinutesPerQuote": 9.7,
    "llmCostPerQuoteEur": 0.0115,
    "rulesPerPartner": 0
   },
   "naive_rules": {
    "jobs": 400,
-   "sendable": 175,
-   "sendableShare": 0.4375,
-   "sendableLast20": 0.4063,
-   "editsPerQuote": 1.22,
-   "medianTotalError": 0.0205,
-   "p90TotalError": 0.1153,
+   "sendable": 187,
+   "sendableShare": 0.4675,
+   "sendableLast20": 0.4375,
+   "editsPerQuote": 1.15,
+   "medianTotalError": 0.0185,
+   "p90TotalError": 0.1137,
    "questionsAsked": 20,
-   "officeMinutesPerQuote": 8.7,
+   "officeMinutesPerQuote": 8.4,
    "llmCostPerQuoteEur": 0.0115,
    "rulesPerPartner": 1.6
   },
   "gated_rules": {
    "jobs": 400,
-   "sendable": 291,
-   "sendableShare": 0.7275,
-   "sendableLast20": 0.8125,
-   "editsPerQuote": 0.55,
-   "medianTotalError": 0.0097,
-   "p90TotalError": 0.0675,
+   "sendable": 305,
+   "sendableShare": 0.7625,
+   "sendableLast20": 0.8688,
+   "editsPerQuote": 0.48,
+   "medianTotalError": 0.0096,
+   "p90TotalError": 0.0668,
    "questionsAsked": 20,
-   "officeMinutesPerQuote": 6.7,
+   "officeMinutesPerQuote": 6.4,
    "llmCostPerQuoteEur": 0.0115,
-   "rulesPerPartner": 1.5
+   "rulesPerPartner": 1.4
   }
  },
  "curves": {
@@ -70,25 +70,25 @@
    0
   ],
   "spec_code": [
-   0.3375,
-   0.325,
-   0.3125,
    0.35,
+   0.35,
+   0.3125,
+   0.4,
    0.35
   ],
   "naive_rules": [
-   0.4125,
-   0.525,
-   0.4375,
-   0.4,
+   0.4625,
+   0.55,
+   0.45,
+   0.4625,
    0.4125
   ],
   "gated_rules": [
-   0.45,
-   0.75,
-   0.8125,
-   0.8,
-   0.825
+   0.4625,
+   0.775,
+   0.8375,
+   0.8875,
+   0.85
   ]
  },
  "bucket": 10,
@@ -128,35 +128,29 @@
  },
  "familyWithGlossary": 0.9675,
  "sources": {
-  "satellite": {
-   "jobs": 165,
-   "withinOnePct": 81
+  "tape": {
+   "jobs": 75,
+   "withinOnePct": 75
   },
   "plan": {
    "jobs": 200,
    "withinOnePct": 200
   },
-  "voice": {
-   "jobs": 17,
-   "withinOnePct": 15
+  "satellite": {
+   "jobs": 105,
+   "withinOnePct": 49
   },
   "customer": {
    "jobs": 18,
    "withinOnePct": 18
+  },
+  "voice": {
+   "jobs": 2,
+   "withinOnePct": 0
   }
  },
  "ledger": {
-  "P1": [
-   {
-    "seq": 33,
-    "rule": {
-     "type": "waste",
-     "value": 0.08
-    },
-    "decision": "added",
-    "why": "median of 30 covering edits; replay: 4 fixed, 0 broken (p=0.063)"
-   }
-  ],
+  "P1": [],
   "P2": [
    {
     "seq": 7,
@@ -291,12 +285,7 @@
   ]
  },
  "learned": {
-  "P1": [
-   {
-    "type": "waste",
-    "value": 0.08
-   }
-  ],
+  "P1": [],
   "P2": [
    {
     "type": "include",
@@ -489,7 +478,7 @@
     "name": "Biberschwanz Rundschnitt, Doppeldeckung, inkl. Verlegung",
     "unit": "m2",
     "llm": 0,
-    "proposed": 200.9,
+    "proposed": 204.6,
     "final": 200.9,
     "unitPrice": 89.39
    },
@@ -498,7 +487,7 @@
     "name": "Unterspannbahn diffusionsoffen",
     "unit": "m2",
     "llm": 204.6,
-    "proposed": 200.9,
+    "proposed": 204.6,
     "final": 200.9,
     "unitPrice": 11.19
    },
@@ -575,7 +564,7 @@
     "unitPrice": 686.33
    }
   ],
-  "proposedTotal": 31402.05,
+  "proposedTotal": 31774.2,
   "finalTotal": 31402.05,
   "edits": 0,
   "llmTotal": 30965.26,

@@ -43,8 +43,8 @@ into a quote **priced from the roofer's own catalog**, the way **that roofer** w
 habits from the edits they make before sending, without learning the wrong ones.
 
 - **The model reads, code measures and prices.** An LLM turns the voice note and photo notes into a structured roof
-  spec (Vercel AI SDK, zod schema). Dimensions come from the architect's plan (parsed by code) or a satellite
-  footprint; a rough "so ungefähr zehn mal acht" is never priced, it becomes a question to the customer. Quantities are
+  spec (Vercel AI SDK, zod schema). Dimensions come from the architect's plan (parsed by code), the roofer's own
+  tape measurement in the voice note, or a satellite footprint; a rough "so ungefähr zehn mal acht" is never priced, it becomes a question to the customer. Quantities are
   geometry; prices come from the catalog.
 - **Each roofer's habits are learned from their edits**: scaffolding from two storeys or always, new underlay on a
   renovation or not, gutters offered when the old ones are rusted, their waste factor. A rule is kept only when
@@ -75,7 +75,8 @@ and the total is within 3%.
 
 ${table(["Field", "As the model reads it", "After code settles it"], Object.entries(f).map(([k, v]: [string, any]) => [k, pct(v.read), pct(v.settled)]))}
 
-Plans were parsed for ${r.sources.plan?.jobs ?? 0} jobs, satellite footprints used for ${r.sources.satellite?.jobs ?? 0}, and ${r.volume.questions} questions sent to customers
+Plans were parsed for ${r.sources.plan?.jobs ?? 0} jobs, the roofer's own tape measurement from the voice note used for ${r.sources.tape?.jobs ?? 0},
+satellite footprints for ${r.sources.satellite?.jobs ?? 0}, and ${r.volume.questions} questions sent to customers
 (${r.volume.answered} answered) when only a rough voice size was left.
 
 ### Habits learned per roofer (gated)
@@ -97,7 +98,7 @@ What went wrong and what changed afterwards: [docs/heldout.md](docs/heldout.md).
 | Part | Files | What it does |
 |---|---|---|
 | Read | \`src/llm/reader.ts\`, \`prompts/extract.md\` | \`generateObject\` with the \`JobSpec\` zod schema (Vercel AI SDK, Anthropic). |
-| Settle | \`src/core/measure.ts\` | Plan parsed by code, satellite footprint, customer question; storeys and skylights from photo notes; glossary. |
+| Settle | \`src/core/measure.ts\` | Plan parsed by code, then the roofer's tape measurement, then the satellite footprint, then a customer question; storeys and skylights from photo notes; glossary. |
 | Take off and price | \`src/core/takeoff.ts\`, \`src/core/quote.ts\` | Roof area, ridge, hips, gutters, downpipes, scaffold; lines from the roofer's catalog with their rules. |
 | Learn | \`src/core/learn.ts\` | Evidence from each sent quote; naive or replay-gated rules; glossary. |
 | Store and serve | \`src/db/schema.ts\`, \`src/service.ts\`, \`src/api/app.ts\` | Drizzle on Postgres (PGlite in tests); Express: \`POST /jobs\`, \`POST /quotes/:id/sent\`, \`GET /partners/:id/rules\`. |
