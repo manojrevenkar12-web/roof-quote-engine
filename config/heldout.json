@@ -1,0 +1,35 @@
+{
+  "_about": "The held-out world: other roofers, other jobs, fewer plans and satellite tiles, more trade slang. Run once with npx tsx scripts/evaluate.ts --heldout. Only scripts/evaluate.ts and the tests read this file.",
+  "name": "heldout",
+  "seed": "heldout-roofers-2026-b",
+  "partners": 10,
+  "jobsPerPartner": 50,
+  "planShare": 0.3,
+  "satelliteShare": 0.7,
+  "satelliteError": 0.02,
+  "voiceApproximate": 0.6,
+  "skylightsOnlyInPhotos": 0.5,
+  "renovationShare": 0.6,
+  "hipShare": 0.45,
+  "storeysOmittedInVoice": 0.4,
+  "slangShare": 0.35,
+  "llm": {
+    "noise": 0.01,
+    "prefersVoiceOverPlan": 0.35,
+    "missesPhotoOnlySkylights": 0.3,
+    "slangMisread": 0.4,
+    "pitchMisheard": 0.04,
+    "assumesOneStorey": 0.7,
+    "quoteArithmeticSlip": 0.25,
+    "quoteWrongItem": 0.1,
+    "quoteWrongPrice": 0.05,
+    "tokensExtract": 2600,
+    "tokensQuote": 6800,
+    "outTokensExtract": 300,
+    "outTokensQuote": 1400
+  },
+  "customer": {
+    "answersQuestion": 0.9,
+    "delayDays": 1
+  }
+}

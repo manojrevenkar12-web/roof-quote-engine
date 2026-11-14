@@ -1,0 +1,42 @@
+export type Design = {
+  jobs: number;
+  sendable: number;
+  sendableShare: number;
+  sendableLast20: number;
+  editsPerQuote: number;
+  medianTotalError: number;
+  p90TotalError: number;
+  questionsAsked: number;
+  officeMinutesPerQuote: number;
+  llmCostPerQuoteEur: number;
+  rulesPerPartner: number;
+};
+export type Rule = { type: "include"; kind: string; when: string; on: boolean } | { type: "waste"; value: number };
+export type ExampleLine = { code: string; name: string; unit: string; llm: number; proposed: number; final: number; unitPrice: number };
+export type Habits = { name: string; city: string; waste: number; scaffold: string; disposal: boolean; underlay: boolean; gutters: boolean };
+export type Run = {
+  world: string;
+  volume: { partners: number; jobs: number; withPlan: number; questions: number; answered: number };
+  designs: Record<string, Design>;
+  curves: Record<string, number[]>;
+  bucket: number;
+  fields: Record<string, { read: number; settled: number }>;
+  familyWithGlossary: number;
+  ledger: Record<string, { seq: number; rule: Rule; decision: string; why: string }[]>;
+  learned: Record<string, Rule[]>;
+  habits: Record<string, Habits>;
+  glossary: Record<string, string>;
+  example: {
+    id: string;
+    partner: string;
+    inputs: { voice: string; photos: string[]; plan: string | null; address: string };
+    lines: ExampleLine[];
+    llmTotal: number;
+    llmEdits: number;
+    proposedTotal: number;
+    finalTotal: number;
+    edits: number;
+    sendable: boolean;
+  };
+};
+export type Console = { dev: Run; heldout: Run | null; names: Record<string, string> };

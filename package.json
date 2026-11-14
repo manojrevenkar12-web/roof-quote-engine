@@ -1,0 +1,31 @@
+{
+  "name": "roof-quote-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Quotes for roofers from voice notes, photo notes and plans, priced from each roofer's own catalog, learning from their edits through a replay gate",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "evaluate": "tsx scripts/evaluate.ts",
+    "heldout": "tsx scripts/evaluate.ts --heldout",
+    "gate": "tsx scripts/gate.ts",
+    "readme": "tsx scripts/readme.ts",
+    "serve": "tsx src/api/main.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.105",
+    "@electric-sql/pglite": "^0.5.16",
+    "ai": "^7.0.173",
+    "drizzle-orm": "^0.45.4",
+    "express": "^5.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.10.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  }
+}

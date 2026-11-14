@@ -1,0 +1,32 @@
+{
+  "_about": "Roofers, their catalogs and habits, their jobs and what arrives about each job, the people who answer questions, and the LLM that reads them: what really happens. Only scripts/evaluate.ts, scripts/export.ts and the tests read this file.",
+  "name": "dev",
+  "seed": "dev-roofers-2026",
+  "partners": 8,
+  "jobsPerPartner": 50,
+  "planShare": 0.45,
+  "satelliteShare": 0.8,
+  "satelliteError": 0.02,
+  "voiceApproximate": 0.6,
+  "skylightsOnlyInPhotos": 0.5,
+  "renovationShare": 0.7,
+  "hipShare": 0.35,
+  "storeysOmittedInVoice": 0.3,
+  "slangShare": 0.25,
+  "llm": {
+    "noise": 0.01,
+    "prefersVoiceOverPlan": 0.35,
+    "missesPhotoOnlySkylights": 0.3,
+    "slangMisread": 0.4,
+    "pitchMisheard": 0.04,
+    "assumesOneStorey": 0.7,
+    "quoteArithmeticSlip": 0.25,
+    "quoteWrongItem": 0.1,
+    "quoteWrongPrice": 0.05,
+    "tokensExtract": 2600,
+    "tokensQuote": 6800,
+    "outTokensExtract": 300,
+    "outTokensQuote": 1400
+  },
+  "customer": { "answersQuestion": 0.9, "delayDays": 1 }
+}

@@ -1,0 +1,7 @@
+{
+  "_about": "The bar the dev report must clear before a change merges. Set before the held-out run; not moved after it.",
+  "gated": { "minSendableLast20": 0.75, "maxEditsPerQuote": 0.8, "maxMedianTotalError": 0.015 },
+  "versusLlmQuote": { "minSendableRatio": 5 },
+  "versusNaive": { "minGainLast20": 0.2 },
+  "fields": { "minSettledLength": 0.98, "minSettledWidth": 0.98, "minFamilyWithGlossary": 0.9 }
+}

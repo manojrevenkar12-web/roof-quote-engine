@@ -1,0 +1,5 @@
+node_modules/
+.deps/
+web/node_modules/
+web/dist/
+*.tsbuildinfo

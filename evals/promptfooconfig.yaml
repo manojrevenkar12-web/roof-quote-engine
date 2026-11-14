@@ -1,0 +1,17 @@
+# Extraction eval for the model reader: 40 jobs from the dev world with the true roof spec.
+# Run with a key:  ANTHROPIC_API_KEY=... npx promptfoo@latest eval -c evals/promptfooconfig.yaml
+# Not run in CI (it calls the model); the simulated reader is evaluated by scripts/evaluate.ts on every push.
+description: roof-quote-engine extraction
+prompts:
+  - file://prompt.cjs
+providers:
+  - id: anthropic:messages:claude-sonnet-4-5
+    config:
+      temperature: 0
+      max_tokens: 600
+tests: file://tests.json
+defaultTest:
+  assert:
+    - type: is-json
+    - type: javascript
+      value: file://assert.cjs

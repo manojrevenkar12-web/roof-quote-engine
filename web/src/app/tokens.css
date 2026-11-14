@@ -1,0 +1,54 @@
+/* Slate, zinc and copper patina: the materials on a German roof. Patina green marks what the engine got right,
+   oxide red what a roofer had to change. Condensed type for numbers, like a site sign. */
+:root {
+  --paper: #eef1f2;
+  --sheet: #ffffff;
+  --slate: #1f2d36;
+  --slate-muted: #5a6b74;
+  --zinc: #b9c6cc;
+  --zinc-soft: #dfe6e9;
+  --patina: #2e8b7a;
+  --patina-soft: #d3ece6;
+  --oxide: #a3412f;
+  --oxide-soft: #f2dcd6;
+  --ochre: #b58a1d;
+  --focus: #1d5fbf;
+
+  --font: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --font-cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+
+  --t-xs: 0.8rem;
+  --t-sm: 0.9rem;
+  --t-md: 1rem;
+  --t-lg: 1.25rem;
+  --t-xl: 1.563rem;
+  --t-2xl: 2.441rem;
+  --t-3xl: 3.4rem;
+  --lh-tight: 1.02;
+  --lh-text: 1.5;
+
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.5rem;
+  --s-6: 2rem;
+  --s-7: 3rem;
+  --s-8: 4.5rem;
+
+  --page: 76rem;
+  --hero-w: 60rem;
+  --measure: 68ch;
+  --radius: 2px;
+  --stroke: 1px;
+  --stroke-bold: 3px;
+  --col-h: 10rem;
+  --bar-w: 0.9rem;
+  --code-w: 5rem;
+  --num-w: 6rem;
+  --name-w: 16rem;
+  --pair: 1fr 1fr;
+  --job: 1fr 1.2fr;
+  --dim: 0.5;
+  --pulse: 1.4s;
+}

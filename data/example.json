@@ -1,0 +1,277 @@
+{
+ "partner": {
+  "id": "P1",
+  "name": "Dachdeckerei Krüger",
+  "city": "Halle",
+  "catalog": [
+   {
+    "code": "A-100",
+    "name": "Frankfurter Pfanne engobiert, inkl. Verlegung",
+    "unit": "m2",
+    "price": 77.87,
+    "kind": "covering",
+    "family": "frankfurter_pfanne"
+   },
+   {
+    "code": "A-101",
+    "name": "Biberschwanz Rundschnitt, Doppeldeckung, inkl. Verlegung",
+    "unit": "m2",
+    "price": 89.39,
+    "kind": "covering",
+    "family": "biberschwanz"
+   },
+   {
+    "code": "A-102",
+    "name": "Betondachstein, inkl. Verlegung",
+    "unit": "m2",
+    "price": 59.73,
+    "kind": "covering",
+    "family": "betondachstein"
+   },
+   {
+    "code": "A-103",
+    "name": "Naturschiefer Altdeutsch, inkl. Verlegung",
+    "unit": "m2",
+    "price": 171.51,
+    "kind": "covering",
+    "family": "schiefer"
+   },
+   {
+    "code": "A-104",
+    "name": "Unterspannbahn diffusionsoffen",
+    "unit": "m2",
+    "price": 11.19,
+    "kind": "underlay"
+   },
+   {
+    "code": "A-105",
+    "name": "Konter- und Dachlattung",
+    "unit": "m2",
+    "price": 14.95,
+    "kind": "battens"
+   },
+   {
+    "code": "A-106",
+    "name": "Aufsparrendämmung 14 cm",
+    "unit": "m2",
+    "price": 57.76,
+    "kind": "insulation"
+   },
+   {
+    "code": "A-107",
+    "name": "Aufsparrendämmung 18 cm",
+    "unit": "m2",
+    "price": 73.07,
+    "kind": "insulation"
+   },
+   {
+    "code": "A-108",
+    "name": "Fassadengerüst inkl. Auf- und Abbau",
+    "unit": "m2",
+    "price": 11.93,
+    "kind": "scaffold"
+   },
+   {
+    "code": "A-109",
+    "name": "Altdach abdecken und entsorgen",
+    "unit": "m2",
+    "price": 23.95,
+    "kind": "disposal"
+   },
+   {
+    "code": "A-110",
+    "name": "Dachfenster 78x118 inkl. Eindeckrahmen",
+    "unit": "Stk",
+    "price": 1051.19,
+    "kind": "skylight"
+   },
+   {
+    "code": "A-111",
+    "name": "Hängerinne Zink, halbrund",
+    "unit": "lfm",
+    "price": 43.41,
+    "kind": "gutter"
+   },
+   {
+    "code": "A-112",
+    "name": "Fallrohr Zink DN 100",
+    "unit": "lfm",
+    "price": 35.92,
+    "kind": "downpipe"
+   },
+   {
+    "code": "A-113",
+    "name": "First mit Lüfterelement",
+    "unit": "lfm",
+    "price": 45.92,
+    "kind": "ridge"
+   },
+   {
+    "code": "A-114",
+    "name": "Grat trocken verlegt",
+    "unit": "lfm",
+    "price": 47.15,
+    "kind": "hip"
+   },
+   {
+    "code": "A-115",
+    "name": "Kaminanschluss Blei",
+    "unit": "Stk",
+    "price": 478.03,
+    "kind": "chimney"
+   },
+   {
+    "code": "A-116",
+    "name": "Baustelleneinrichtung",
+    "unit": "psch",
+    "price": 686.33,
+    "kind": "setup"
+   }
+  ]
+ },
+ "jobs": [
+  {
+   "id": "P1-J001",
+   "partner": "P1",
+   "seq": 0,
+   "inputs": {
+    "voice": "Also, Satteldach, 14,62 mal 8,81 Meter. Neigung 31 Grad. Zwei Geschosse. Neubau, Eindeckung mit Biberschwanzziegel.",
+    "photos": [
+     "Foto 2: Dachfläche Süd, 3 Dachfenster eingezeichnet",
+     "Foto 4: 2 Schornsteine, Anschluss alt",
+     "Foto 10: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": null,
+    "address": "Gartenweg 39, Halle"
+   }
+  },
+  {
+   "id": "P1-J002",
+   "partner": "P1",
+   "seq": 1,
+   "inputs": {
+    "voice": "Also, Satteldach, 15,18 mal 7,87 Meter. Neigung 46 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit Biberschwanz. Rinnen sind auch durch.",
+    "photos": [
+     "Foto 4: ein Schornstein, Anschluss alt",
+     "Foto 7: Rinne verrostet, teilweise undicht",
+     "Foto 10: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": "Grundriss 15,18 m x 7,87 m, Dachneigung 46°, 2 Vollgeschosse, Satteldach",
+    "address": "Am Anger 59, Halle"
+   }
+  },
+  {
+   "id": "P1-J003",
+   "partner": "P1",
+   "seq": 2,
+   "inputs": {
+    "voice": "Also, Walmdach, so ungefähr elf mal so ungefähr neun Meter. Neigung so um die 45 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit Biber. Kunde will gleich dämmen, 14 Zentimeter Aufsparren.",
+    "photos": [
+     "Foto 6: 2 Schornsteine, Anschluss alt",
+     "Foto 11: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": "Grundriss 11,47 m x 8,69 m, Dachneigung 45°, 2 Vollgeschosse, Walmdach",
+    "address": "Gartenweg 43, Halle"
+   }
+  },
+  {
+   "id": "P1-J004",
+   "partner": "P1",
+   "seq": 3,
+   "inputs": {
+    "voice": "Also, Walmdach, 9,12 mal 7,68 Meter. Neigung 39 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit Frankfurter Pfanne.",
+    "photos": [
+     "Foto 10: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": null,
+    "address": "Gartenweg 21, Halle"
+   }
+  },
+  {
+   "id": "P1-J005",
+   "partner": "P1",
+   "seq": 4,
+   "inputs": {
+    "voice": "Also, Satteldach, so ungefähr zwölf mal so ungefähr acht Meter. Neigung so um die 29 Grad. Neubau, Eindeckung mit Betondachstein.",
+    "photos": [
+     "Foto 2: Dachfläche Süd, 1 Dachfenster eingezeichnet",
+     "Foto 9: Gesamtansicht, 1 Geschoss"
+    ],
+    "plan": null,
+    "address": "Ahornallee 8, Halle"
+   }
+  },
+  {
+   "id": "P1-J006",
+   "partner": "P1",
+   "seq": 5,
+   "inputs": {
+    "voice": "Also, Satteldach, 11,16 mal 9,72 Meter. Neigung 33 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit Biberschwanz.",
+    "photos": [
+     "Foto 1: Dachfläche Süd, 3 Dachfenster eingezeichnet",
+     "Foto 5: ein Schornstein, Anschluss alt",
+     "Foto 8: Rinne verrostet, teilweise undicht",
+     "Foto 10: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": null,
+    "address": "Bergstraße 20, Halle"
+   }
+  },
+  {
+   "id": "P1-J007",
+   "partner": "P1",
+   "seq": 6,
+   "inputs": {
+    "voice": "Also, Walmdach, so ungefähr elf mal so ungefähr zehn Meter. Neigung so um die 40 Grad. Eingeschossig. Neubau, Eindeckung mit Betondachstein.",
+    "photos": [
+     "Foto 5: 2 Schornsteine, Anschluss alt",
+     "Foto 9: Gesamtansicht, 1 Geschoss"
+    ],
+    "plan": null,
+    "address": "Birkenstraße 75, Halle"
+   }
+  },
+  {
+   "id": "P1-J008",
+   "partner": "P1",
+   "seq": 7,
+   "inputs": {
+    "voice": "Also, Satteldach, 13,56 mal 10,15 Meter. Neigung 45 Grad. Drei Geschosse. Neubau, Eindeckung mit Schiefer.",
+    "photos": [
+     "Foto 11: Gesamtansicht, 3 Geschosse"
+    ],
+    "plan": "Grundriss 13,56 m x 10,15 m, Dachneigung 45°, 3 Vollgeschosse, Satteldach",
+    "address": "Birkenstraße 20, Halle"
+   }
+  },
+  {
+   "id": "P1-J009",
+   "partner": "P1",
+   "seq": 8,
+   "inputs": {
+    "voice": "Also, Walmdach, 12,96 mal 6,96 Meter. Neigung 23 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit die Braas-Pfanne. Kunde will gleich dämmen, 14 Zentimeter Aufsparren.",
+    "photos": [
+     "Foto 3: Dachfläche Süd, 1 Dachfenster eingezeichnet",
+     "Foto 9: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": "Grundriss 12,96 m x 6,96 m, Dachneigung 23°, 2 Vollgeschosse, Walmdach",
+    "address": "Feldstraße 51, Halle"
+   }
+  },
+  {
+   "id": "P1-J010",
+   "partner": "P1",
+   "seq": 9,
+   "inputs": {
+    "voice": "Also, Satteldach, so ungefähr acht mal so ungefähr sieben Meter. Neigung so um die 43 Grad. Zwei Geschosse. Altes Dach muss runter, neu mit Betondachsteine. Kunde will gleich dämmen, 18 Zentimeter Aufsparren. Rinnen sind auch durch.",
+    "photos": [
+     "Foto 6: ein Schornstein, Anschluss alt",
+     "Foto 7: Rinne verrostet, teilweise undicht",
+     "Foto 10: Gesamtansicht, 2 Geschosse"
+    ],
+    "plan": null,
+    "address": "Am Anger 16, Halle"
+   }
+  }
+ ]
+}
